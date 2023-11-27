@@ -15,9 +15,9 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 DEPS =
 
-SRC = main.cpp Contact.cpp PhoneBook.cpp
+SRC = tests.cpp Account.cpp
 OBJ = $(SRC:.cpp=.o)
-NAME = phonebook
+NAME = account
 
 all: $(NAME)
 $(NAME): $(OBJ) $(DEPS)
