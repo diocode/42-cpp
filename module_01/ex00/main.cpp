@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Zombie.hpp"
 
-int	main(int ac, char **av)
+int main(void)
 {
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for (int i = 0; av[++i];)
-		for (int j = -1; av[i][++j];)
-			std::cout << (char) toupper(av[i][j]);
-	std::cout << std::endl;
+	Zombie*	new_zombie;
+
+	randomChump("Jeff");
+	new_zombie = newZombie("Foo");
+	new_zombie->announce();
+	delete new_zombie;
+
 	return 0;
 }
