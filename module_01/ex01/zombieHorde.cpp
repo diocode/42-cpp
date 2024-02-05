@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#include "Zombie.hpp"
 
-void randomChump(std::string name)
+Zombie*	zombieHorde(int N, std::string name)
 {
-	Zombie zombie(name);
-	zombie.announce();
+	Zombie*	horde;
+
+	if (!N || name.empty())
+		return 0;
+	horde = new Zombie[N];
+	for (int i = 0; i < N; i++)
+		horde[i] = Zombie(name);
+
+	return horde;
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-void randomChump(std::string name)
+#include <iostream>
+
+class	Zombie
 {
-	Zombie zombie(name);
-	zombie.announce();
-}
+public:
+	Zombie();
+	Zombie(std::string name);
+	~Zombie();
+
+	void	announce(void);
+
+private:
+	std::string	name;
+};
+
+Zombie*	zombieHorde(int N, std::string name);
+
+#endif // ZOMBIE_HPP

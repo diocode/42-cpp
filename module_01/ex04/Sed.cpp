@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Sed.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#include <fstream>
+#include <iostream>
+#include "Sed.hpp"
 
-void randomChump(std::string name)
+Sed::Sed(std::string file)
 {
-	Zombie zombie(name);
-	zombie.announce();
+	this->_inFile = file;
+	this->_outFile = file + ".replace";
+}
+
+Sed::~Sed() {}
+
+void	Sed::replace(std::string s1, std::string s2)
+{
+	std::ifstream	infile(_inFile.c_str());
+	if (infile.is_open())
+	{
+		std::ofstream	outFile(_outFile.c_str());
+		std::string 	line;
+
+		while (std::getline(infile, line))
+		{
+			size_t	pos = line.find(s1, 0);
+			if (pos != std::string::npos)
+			{
+				line.erase(pos, s1.length());
+				line.insert(pos, s2);
+			}
+			outFile << line << std::endl;
+		}
+		infile.close();
+		outFile.close();
+	}
+	else
+	{
+		std::cerr << "Unable to open file." << std::endl;
+		exit(EXIT_FAILURE);
+	}
 }

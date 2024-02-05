@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-# define MAIN_HPP
+#include "Weapon.hpp"
+#include "HumanA.hpp"
 
-#include <iostream>
-#include "Zombie.hpp"
+HumanA::HumanA(std::string name, Weapon& weapon)
+{
+	this->_name = name;
+	this->weapon = &weapon;
+}
 
-#endif //MAIN_HPP
+HumanA::~HumanA() {}
+
+void HumanA::attack(void)
+{
+	std::cout << _name << " attacks with their " << weapon->getType() << std::endl;
+}
+

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-void randomChump(std::string name)
+#include <iostream>
+
+class	Weapon
 {
-	Zombie zombie(name);
-	zombie.announce();
-}
+private:
+	std::string	type;
+
+public:
+	Weapon(std::string type);
+	~Weapon();
+
+	const std::string&	getType(void);
+	void	setType(std::string newType);
+
+};
+
+#endif // WEAPON_HPP

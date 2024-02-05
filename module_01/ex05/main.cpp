@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#include "Harl.hpp"
 
-void randomChump(std::string name)
+int main(void)
 {
-	Zombie zombie(name);
-	zombie.announce();
+	Harl	Harl;
+
+	// Valid options
+	Harl.complain("DEBUG");
+	Harl.complain("INFO");
+	Harl.complain("WARNING");
+	Harl.complain("ERROR");
+	Harl.complain("ERROR");
+
+	//Invalid options
+	Harl.complain("");
+	Harl.complain("TEST");
 }

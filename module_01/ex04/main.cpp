@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#include "Sed.hpp"
 
-void randomChump(std::string name)
+int main(int ac, char **av)
 {
-	Zombie zombie(name);
-	zombie.announce();
+	if (ac != 4 || !av[1][0])
+	{
+		std::cout << "Invalid arguments" << std::endl;
+		return EXIT_FAILURE;
+	}
+	Sed	sed(av[1]);
+	sed.replace(av[2], av[3]);
 }

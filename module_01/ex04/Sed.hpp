@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#ifndef SED_HPP
+# define SED_HPP
 
-void randomChump(std::string name)
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+
+class	Sed
 {
-	Zombie zombie(name);
-	zombie.announce();
-}
+private:
+	std::string	_inFile;
+	std::string	_outFile;
+
+public:
+	Sed(std::string file);
+	~Sed();
+
+	void	replace(std::string s1, std::string s2);
+};
+
+#endif // SED_HPP

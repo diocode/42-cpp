@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-void randomChump(std::string name)
+#include <iostream>
+
+class	Harl
 {
-	Zombie zombie(name);
-	zombie.announce();
-}
+private:
+	char	_filter;
+
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
+
+public:
+	Harl();
+	Harl(std::string filter);
+	~Harl();
+
+	void	complain(std::string level);
+};
+
+typedef void (Harl::*t_cmd) ( void );
+
+#endif // HARL_HPP

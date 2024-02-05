@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex01/Zombie.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-void randomChump(std::string name)
+#include <iostream>
+#include "Weapon.hpp"
+
+class	HumanB
 {
-	Zombie zombie(name);
-	zombie.announce();
-}
+	Weapon*		weapon;
+	std::string	_name;
+
+public:
+	HumanB(std::string name);
+	~HumanB();
+
+	void	attack(void);
+	void	setWeapon(Weapon& weaponVal);
+
+private:
+
+};
+
+#endif // HUMANB_HPP
