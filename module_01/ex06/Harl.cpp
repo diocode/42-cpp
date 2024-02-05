@@ -12,54 +12,37 @@
 
 #include "Harl.hpp"
 
-Harl::Harl()
-{
-	_filter = 0;
-}
-
-Harl::Harl(std::string filter)
-{
-	_filter = 0;
-	if (!filter.compare("DEBUG") || !filter.compare("INFO")
-		|| !filter.compare("WARNING") || !filter.compare("ERROR"))
-		_filter = filter[0];
-}
+Harl::Harl() {}
 
 Harl::~Harl() {}
 
 void	Harl::debug(void)
 {
-	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup"
+	std::cout << "[ DEBUG ]\n" << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup"
 				 " burger. I really do!" << std::endl;
 }
 
 void	Harl::info(void)
 {
-	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put "
+	std::cout << "[ INFO ]\n" << "I cannot believe adding extra bacon costs more money. You didn’t put "
 				 "enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 }
 
 void	Harl::warning(void)
 {
-	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put"
+	std::cout << "[ WARNING ]\n" << "I cannot believe adding extra bacon costs more money. You didn’t put"
 				 "enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 }
 
 void	Harl::error(void)
 {
-	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+	std::cout << "[ ERROR ]\n" << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
 void	Harl::complain(std::string level)
 {
 	t_cmd  cmds[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
-	switch(level[0])
-	{
-		case 'D':
-			
-	}
 
 	for (int i = 0; i < 4; i++)
 	{
