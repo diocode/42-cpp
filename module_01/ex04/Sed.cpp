@@ -33,10 +33,11 @@ void	Sed::replace(std::string s1, std::string s2)
 		while (std::getline(infile, line))
 		{
 			size_t	pos = line.find(s1, 0);
-			if (pos != std::string::npos)
+			while (pos != std::string::npos)
 			{
 				line.erase(pos, s1.length());
 				line.insert(pos, s2);
+				pos = line.find(s1, 0);
 			}
 			outFile << line << std::endl;
 		}
