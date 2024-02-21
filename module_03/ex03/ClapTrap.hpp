@@ -10,19 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
-int main(void) {
-	ClapTrap a("ClapTrack");
-	ScavTrap b("ScavTrap");
-	ScavTrap c;
+# include <iostream>
+# include <string>
 
-	a.attack("ScavTrap");
-	b.takeDamage(20);
-	b.beRepaired(20);
-	b.guardGate();
-	c.attack("ClapTrap");
-	c.takeDamage(30);
-	c.beRepaired(10);
-	c.guardGate();
-}
+class	ClapTrap {
+protected:
+	std::string	name;
+	int			hitPoints;
+	int 		energy;
+	int 		atk;
+
+public:
+	ClapTrap();
+	ClapTrap(const std::string& value);
+	ClapTrap(const ClapTrap& value);
+	ClapTrap& operator=(const ClapTrap& value);
+	~ClapTrap();
+
+	void attack(const std::string& target);
+	void takeDamage(unsigned int amount);
+	void beRepaired(unsigned int amount);
+};
+
+#endif //CLAPTRAP_HPP

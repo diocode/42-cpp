@@ -19,7 +19,7 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
 	atk = 20;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
+ScavTrap::ScavTrap(const std::string& value) : ClapTrap(value) {
 	std::cout << "ScavTrap Copy constructor with params called\n";
 	hitPoints = 100;
 	energy = 50;

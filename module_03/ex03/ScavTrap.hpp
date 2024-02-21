@@ -10,19 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-int main(void) {
-	ClapTrap a("ClapTrack");
-	ScavTrap b("ScavTrap");
-	ScavTrap c;
+# include "ClapTrap.hpp"
 
-	a.attack("ScavTrap");
-	b.takeDamage(20);
-	b.beRepaired(20);
-	b.guardGate();
-	c.attack("ClapTrap");
-	c.takeDamage(30);
-	c.beRepaired(10);
-	c.guardGate();
-}
+class	ScavTrap : virtual public ClapTrap {
+public:
+	ScavTrap();
+	ScavTrap(const std::string& value);
+	ScavTrap(const ScavTrap& value);
+	ScavTrap& operator=(const ScavTrap& value);
+	~ScavTrap();
+
+	void attack(const std::string& target);
+	void guardGate();
+};
+
+#endif //SCAVTRAP_HPP

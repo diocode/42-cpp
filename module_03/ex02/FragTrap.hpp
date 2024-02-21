@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int main(void) {
-	ClapTrap a("ClapTrack");
-	ScavTrap b("ScavTrap");
-	ScavTrap c;
+# include "ClapTrap.hpp"
 
-	a.attack("ScavTrap");
-	b.takeDamage(20);
-	b.beRepaired(20);
-	b.guardGate();
-	c.attack("ClapTrap");
-	c.takeDamage(30);
-	c.beRepaired(10);
-	c.guardGate();
-}
+class	FragTrap : public ClapTrap {
+public:
+	FragTrap();
+	FragTrap(const std::string& name);
+	FragTrap(const FragTrap& value);
+	FragTrap& operator=(const FragTrap& value);
+	~FragTrap();
+
+	void	highFivesGuys(void);
+};
+
+#endif //FRAGTRAP_HPP

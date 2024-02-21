@@ -10,19 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-int main(void) {
-	ClapTrap a("ClapTrack");
-	ScavTrap b("ScavTrap");
-	ScavTrap c;
+# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-	a.attack("ScavTrap");
-	b.takeDamage(20);
-	b.beRepaired(20);
-	b.guardGate();
-	c.attack("ClapTrap");
-	c.takeDamage(30);
-	c.beRepaired(10);
-	c.guardGate();
-}
+class	DiamondTrap : public ScavTrap, public FragTrap {
+private:
+	std::string diamondName;
+
+public:
+	DiamondTrap();
+	DiamondTrap(const std::string& value);
+	DiamondTrap(const DiamondTrap& value);
+	DiamondTrap& operator=(const DiamondTrap& value);
+	~DiamondTrap();
+
+	using	ScavTrap::attack;
+	void	whoAmI();
+};
+
+#endif //DIAMONDTRAP_HPP
