@@ -10,25 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "WrongAnimal.hpp"
 
-# include <iostream>
-# include <string>
-# include <cstring>
+WrongAnimal::WrongAnimal() {
+	std::cout << "WrongAnimal default constructor called\n";
+	type = "none";
+}
 
-class	Animal {
-protected:
-	std::string	type;
+WrongAnimal::WrongAnimal(const WrongAnimal& value) {
+	std::cout << "WrongAnimal copy constructor called\n";
+	*this = value;
+	type = value.type;
+}
 
-public:
-	Animal();
-	Animal(const Animal& value);
-	Animal& operator=(const Animal& value);
-	virtual ~Animal();
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& value) {
+	std::cout << "WrongAnimal copy assignment operator called\n";
+	this->type = value.type;
+	return *this;
+}
 
-	virtual void	makeSound() const;
-	std::string	getType() const;
-};
+WrongAnimal::~WrongAnimal() {
+	std::cout << "WrongAnimal Destructor called\n";
+}
 
-#endif //ANIMAL_HPP
+void	WrongAnimal::makeSound() const {
+	std::cout << "I'm a failure! Why was I born this way?!\n";
+}
+
+std::string	WrongAnimal::getType() const {
+	return this->type;
+}

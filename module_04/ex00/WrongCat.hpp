@@ -10,25 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include <iostream>
-# include <string>
-# include <cstring>
+# include "WrongAnimal.hpp"
 
-class	Animal {
-protected:
-	std::string	type;
-
+class	WrongCat : public WrongAnimal {
 public:
-	Animal();
-	Animal(const Animal& value);
-	Animal& operator=(const Animal& value);
-	virtual ~Animal();
+	WrongCat();
+	WrongCat(const WrongCat& value);
+	WrongCat& operator=(const WrongCat& value);
+	~WrongCat();
 
-	virtual void	makeSound() const;
-	std::string	getType() const;
+	void	makeSound() const;
 };
 
-#endif //ANIMAL_HPP
+#endif //WRONGCAT_HPP

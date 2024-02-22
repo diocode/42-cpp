@@ -10,25 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "Cat.hpp"
 
-# include <iostream>
-# include <string>
-# include <cstring>
+Cat::Cat() {
+	std::cout << "Cat default constructor called\n";
+	type = "Cat";
+}
 
-class	Animal {
-protected:
-	std::string	type;
+Cat::Cat(const Cat& value) : Animal(value) {
+	std::cout << "Cat copy constructor called\n";
+	*this = value;
+	type = value.type;
+}
 
-public:
-	Animal();
-	Animal(const Animal& value);
-	Animal& operator=(const Animal& value);
-	virtual ~Animal();
+Cat& Cat::operator=(const Cat& value) {
+	std::cout << "Cat copy assignment operator called\n";
+	this->type = value.type;
+	return *this;
+}
 
-	virtual void	makeSound() const;
-	std::string	getType() const;
-};
+Cat::~Cat() {
+	std::cout << "Cat Destructor called\n";
+}
 
-#endif //ANIMAL_HPP
+void	Cat::makeSound() const {
+	std::cout << "Meow Meow\n";
+}
