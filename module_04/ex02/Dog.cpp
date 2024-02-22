@@ -10,30 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
-int main(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+Dog::Dog() {
+	std::cout << "Dog default constructor called\n";
+	type = "Dog";
+	_brain = new Brain();
+}
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+Dog::Dog(const Dog& value) : AAnimal(value) {
+	std::cout << "Dog copy constructor called\n";
+	*this = value;
+	type = value.type;
+}
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
-	return 0;
+Dog& Dog::operator=(const Dog& value) {
+	std::cout << "Dog copy assignment operator called\n";
+	this->type = value.type;
+	return *this;
+}
+
+Dog::~Dog() {
+	std::cout << "Dog Destructor called\n";
+	delete(_brain);
+}
+
+void	Dog::makeSound() const {
+	std::cout << "Bark Bark\n";
 }

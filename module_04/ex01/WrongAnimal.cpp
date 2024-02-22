@@ -10,30 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
 #include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
-int main(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+WrongAnimal::WrongAnimal() {
+	std::cout << "WrongAnimal default constructor called\n";
+	type = "none";
+}
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+WrongAnimal::WrongAnimal(const WrongAnimal& value) {
+	std::cout << "WrongAnimal copy constructor called\n";
+	*this = value;
+	type = value.type;
+}
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
-	return 0;
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& value) {
+	std::cout << "WrongAnimal copy assignment operator called\n";
+	this->type = value.type;
+	return *this;
+}
+
+WrongAnimal::~WrongAnimal() {
+	std::cout << "WrongAnimal Destructor called\n";
+}
+
+void	WrongAnimal::makeSound() const {
+	std::cout << "I'm a failure! Why was I born this way?!\n";
+}
+
+std::string	WrongAnimal::getType() const {
+	return this->type;
 }

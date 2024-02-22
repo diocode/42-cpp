@@ -10,30 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-int main(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+# include "WrongAnimal.hpp"
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+class	WrongCat : public WrongAnimal {
+public:
+	WrongCat();
+	WrongCat(const WrongCat& value);
+	WrongCat& operator=(const WrongCat& value);
+	~WrongCat();
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
-	return 0;
-}
+	void	makeSound() const;
+};
+
+#endif //WRONGCAT_HPP

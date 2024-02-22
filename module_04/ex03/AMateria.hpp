@@ -10,30 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
-int main(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+# include <iostream>
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+class AMateria {
+protected:
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
-	return 0;
-}
+public:
+	AMateria(std::string const &type);
+
+	std::string const &getType() const; //Returns the materia type
+	virtual AMateria *clone() const = 0;
+	virtual void use(ICharacter& target);
+};
+
+#endif //AMATERIA_HPP

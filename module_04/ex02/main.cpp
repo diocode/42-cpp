@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
@@ -18,22 +18,17 @@
 
 int main(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+	const AAnimal* j = new Dog();
+	const AAnimal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+	delete j;//should not create a leak
+	delete i;
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
+	const AAnimal *arr[6] = {new Dog(), new Dog(), new Dog(), new Cat(), new Cat(), new Cat()};
+	for (int k = 0; k < 6; k++)
+	{
+		std::cout << "AAnimal type: " << arr[k]->getType() << std::endl;
+		delete arr[k];
+	}
 	return 0;
 }

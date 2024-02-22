@@ -10,30 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int main(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+# include <iostream>
+# include <string>
+# include <cstring>
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+#include "Brain.hpp"
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
-	return 0;
-}
+class	Animal {
+protected:
+	std::string	type;
+
+public:
+	Animal();
+	Animal(const Animal& value);
+	Animal& operator=(const Animal& value);
+	virtual ~Animal();
+
+	virtual void	makeSound() const;
+	std::string	getType() const;
+};
+
+#endif //ANIMAL_HPP

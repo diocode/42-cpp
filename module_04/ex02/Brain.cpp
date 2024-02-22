@@ -10,30 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Brain.hpp"
 
-int main(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* c = new Cat();
-	const WrongAnimal* i = new WrongCat();
+Brain::Brain() {
+	std::cout << "Brain default constructor called\n";
+}
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	c->makeSound(); //will output the cat sound!
-	meta->makeSound();
+Brain::Brain(const Brain& value) {
+	std::cout << "Brain copy constructor called\n";
+	*this = value;
+	std::copy(value.ideas->begin(), value.ideas->end(), ideas->begin());
+}
 
-	delete(meta);
-	delete(j);
-	delete(i);
-	delete(c);
-	return 0;
+Brain& Brain::operator=(const Brain& value) {
+	std::cout << "Brain copy assignment operator called\n";
+	std::copy(value.ideas->begin(), value.ideas->end(), ideas->begin());
+	return *this;
+}
+
+Brain::~Brain() {
+	std::cout << "Brain Destructor called\n";
 }
