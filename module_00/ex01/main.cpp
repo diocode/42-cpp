@@ -19,7 +19,7 @@ int	main()
 
 	phonebook.welcome_msg();
 	std::cout << "> " <<std::flush;
-	while (std::cin >> input)
+	while (getline(std::cin, input).good())
 	{
 		if (!input.compare("ADD"))
 			phonebook.add_contact();

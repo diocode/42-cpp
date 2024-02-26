@@ -47,7 +47,6 @@ void		Contact::set_index(int index)
 
 void	Contact::get_contact(void)
 {
-	std::cin.ignore();
 	this->first_name = this->_getInput("First Name");
 	this->last_name = this->_getInput("Last Name");
 	this->nickname  = this->_getInput("Nickname");

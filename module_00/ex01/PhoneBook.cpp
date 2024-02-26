@@ -26,7 +26,7 @@ void	Phonebook::welcome_msg(void) const
 	std::cout << std::endl;
 	std::cout << "------------ USAGE ---------------" << std::endl;
 	std::cout << "ADD - to add a contact." << std::endl;
-	std::cout << "SEARCH - to search for a contact." << std::endl;
+	std::cout << "SEARCH - to search for a c  ontact." << std::endl;
 	std::cout << "EXIT - to quite the PhoneBook." << std::endl;
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << std::endl;
@@ -54,6 +54,8 @@ void	Phonebook::_searchContact(void)
 		if (std::cin.good() && (input >= 0 && input < this->len))
 		{
 			contacts[input].print_contact(input);
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 			return;
 		}
 		else
