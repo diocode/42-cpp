@@ -10,27 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AANIMAL_HPP
-# define AANIMAL_HPP
+#pragma once
 
 # include <iostream>
-# include <string>
-# include <cstring>
+#include "Bureaucrat.hpp"
 
-#include "Brain.hpp"
+class Bureaucrat;
 
-class	AAnimal {
-protected:
-	std::string	type;
+class	Form {
+private:
+	const std::string name;
+	bool	isSigned;
+	const int	signGrade;
+	const int	execGrade;
 
 public:
-	AAnimal();
-	AAnimal(const AAnimal& value);
-	AAnimal& operator=(const AAnimal& value);
-	virtual ~AAnimal() = 0;
+	Form();
+	Form(std::string name, int signGrade, int execGrade);
+	Form(const Form& value);
+	Form& operator=(const Form& value);
+	~Form();
 
-	virtual void	makeSound() const = 0;
-	std::string	getType() const;
+	std::string	getName() const;
+	bool	getIsSigned() const;
+	int getSignGrade() const;
+	int getExecGrade() const;
+	void	beSigned(const Bureaucrat& bureaucrat);
+
+	class	GradeTooHighException : public std::exception {
+	public:
+		virtual const char*	what() const throw();
+	};
+
+	class	GradeTooLowException : public std::exception {
+	public:
+		virtual	const char* what() const throw();
+	};
 };
 
-#endif //AANIMAL_HPP
+std::ostream& operator<<(std::ostream& out, const Form& form);
