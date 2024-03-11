@@ -10,31 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
 #include <iostream>
+#include "Array.hpp"
+#include "Array.tpp"
 
-static void	addNbr(int& value) {
-	value += 1;
-}
+int main()
+{
+	Array<int> aArr(3);
+	Array<int> bArr(5);
 
-static void	lessChar(char& value) {
-	if (value == 65)
-		value = 90;
-	else
-		value -= 1;
-}
+	std::cout << "====================================" << std::endl;
+	for (unsigned int i = 0; i < aArr.size(); i ++) {
+		std::cout << "aArr" << "[" << i << "] = " << aArr[i] << "\n";
+	}
+	std::cout << std::endl;
+	for (unsigned int i = 0; i < bArr.size(); i ++) {
+		std::cout << "bArr" << "[" << i << "] = " << bArr[i] << "\n";
+	}
 
-int	main() {
-	char	stringArr[5] = {'A', 'B', 'C', 'D', 'E'};
-	int 	intArr[3] = {1, 2, 3};
+	bArr[0] = 1;
+	bArr[1] = 2;
+	bArr[2] = 3;
+	bArr[3] = 4;
+	bArr[4] = 5;
+	aArr = bArr;
 
-	std::cout << "Original Arr: " << stringArr[0] << stringArr[1] << stringArr[2] << stringArr[3] << stringArr[4] << std::endl;
-	::iter(stringArr, 5, lessChar);
-	std::cout << "Altered Arr: " << stringArr[0] << stringArr[1] << stringArr[2] << stringArr[3] << stringArr[4] << std::endl;
+	std::cout << "====================================" << std::endl;
+	for (unsigned int i = 0; i < aArr.size(); i ++) {
+		std::cout << "aArr" << "[" << i << "] = " << aArr[i] << "\n";
+	}
+	std::cout << std::endl;
+	for (unsigned int i = 0; i < bArr.size(); i ++) {
+		std::cout << "bArr" << "[" << i << "] = " << bArr[i] << "\n";
+	}
 
-	std::cout << "\nOriginal Arr: " << intArr[0] << intArr[1] << intArr[2] << std::endl;
-	::iter(intArr, 3, addNbr);
-	std::cout << "Altered Arr: " << intArr[0] << intArr[1] << intArr[2] << std::endl;
+	Array<int> empty;
 
-	return 0;
+	std::cout << "====================================" << std::endl;
+	for (unsigned int i = 0; i < empty.size(); i ++) {
+		std::cout << "empty" << "[" << i << "] = " << empty[i] << "\n";
+	}
+
+	try { std::cout << aArr[aArr.size() + 1] << std::endl; }
+	catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	return (0);
 }
