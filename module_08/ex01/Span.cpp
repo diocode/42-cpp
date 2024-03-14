@@ -40,7 +40,6 @@ void	Span::addRange(std::vector<int>::iterator itBegin, std::vector<int>::iterat
 	for (std::vector<int>::iterator it = itBegin; it != itEnd; ++it)
 		this->addNumber(*it);
 }
-
 int	Span::shortestSpan() {
 	if (container.size() < 2)
 		throw NotEnoughElementsException();
@@ -49,8 +48,8 @@ int	Span::shortestSpan() {
 	std::sort(tmp.begin(), tmp.end());
 	int res = *(tmp.begin() + 1) - *tmp.begin();
 
-	for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end(); ++it) {
-		if((*(it + 1) - *it ) < res) {
+	for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end() - 1; it++) {
+		if((*(it + 1) - *it) < res) {
 			res = *(it + 1) - *it;
 		}
 	}
@@ -62,11 +61,8 @@ int		Span::longestSpan() {
 	if (container.size() < 2)
 		throw NotEnoughElementsException();
 
-	std::vector<int> tmp(container);
-	std::sort(tmp.begin(), tmp.end());
-	int res = *(tmp.begin() + 1) - *tmp.begin();
-
-	for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end(); ++it) {
+	int res = 0;
+	for (std::vector<int>::iterator it = container.begin(); it != container.end(); it++) {
 		if((*(it + 1) - *it ) > res) {
 			res = *(it + 1) - *it;
 		}
