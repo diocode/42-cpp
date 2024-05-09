@@ -14,9 +14,9 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 DEPS =
 
-SRC = main.cpp BitcoinExchange.cpp
+SRC = main.cpp RPN.cpp
 OBJ = $(SRC:.cpp=.o)
-NAME = unknown
+NAME = RPN
 
 all: $(NAME)
 $(NAME): $(OBJ) $(DEPS)

@@ -10,29 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "RPN.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <map>
-#include <sstream>
-#include <string>
+RPN::RPN() {}
 
-class BitcoinExchange {
-private:
-	std::map<std::string, float>	btcPrices;
+RPN::RPN(const RPN &value) {
+	this->stk = value.stk;
+}
 
-	void	exchangeRates();
-	void	printInfo(std::string date, float value);
-	void	closestDate(std::string date, float value);
+RPN &RPN::operator=(const RPN &value) {
+	this->stk = value.stk;
+	return *this;
+}
 
-public:
-	BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& value);
-	BitcoinExchange&	operator=(const BitcoinExchange& value);
-	~BitcoinExchange();
+RPN::~RPN() {}
 
-	void	exchange(const std::string &input);
-};
+int RPN::calc(const std::string& str) {
 
-float	strToFloat(std::string str);
+	int a, b, res;
+	std::stringstream	ss(str);
+	std::string	curr;
+
+	while (ss >> curr) {
+		if (curr == "/" || curr == "*" || curr == "-" || curr == "+") {
+			if (stk.size() < 2)
+				throw std::runtime_error("Error");
+			b = stk.top();
+			stk.pop(); //WIP
+		}
+	}
+}

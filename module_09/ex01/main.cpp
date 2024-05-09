@@ -10,29 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "RPN.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <map>
-#include <sstream>
-#include <string>
+bool	isValid(const std::string& str) {
+	if (str.find_first_not_of("0123456789+-/* ") == std::string::npos)
+		return true;
+	return false;
+}
 
-class BitcoinExchange {
-private:
-	std::map<std::string, float>	btcPrices;
+int main(int ac, char **av) {
+	if (ac != 2 || !av[1][0] || !isValid(av[1]))
+		std::cerr << "Error\n";
 
-	void	exchangeRates();
-	void	printInfo(std::string date, float value);
-	void	closestDate(std::string date, float value);
+	RPN	calculator;
 
-public:
-	BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& value);
-	BitcoinExchange&	operator=(const BitcoinExchange& value);
-	~BitcoinExchange();
-
-	void	exchange(const std::string &input);
-};
-
-float	strToFloat(std::string str);
+	try {
+		std::cout << calculator.calc(av[1]) << std::endl;
+	} catch (const std::exception& e)
+		std::cout << e.what() << std::endl;
+}

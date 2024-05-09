@@ -13,26 +13,18 @@
 #pragma once
 
 #include <iostream>
-#include <fstream>
-#include <map>
-#include <sstream>
 #include <string>
+#include <stack>
 
-class BitcoinExchange {
+class	RPN {
 private:
-	std::map<std::string, float>	btcPrices;
-
-	void	exchangeRates();
-	void	printInfo(std::string date, float value);
-	void	closestDate(std::string date, float value);
+	std::stack<int>	stk;
 
 public:
-	BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& value);
-	BitcoinExchange&	operator=(const BitcoinExchange& value);
-	~BitcoinExchange();
+	RPN();
+	RPN(const RPN& value);
+	RPN&	operator=(const RPN& value);
+	~RPN();
 
-	void	exchange(const std::string &input);
+	int	calc(const std::string& str);
 };
-
-float	strToFloat(std::string str);
