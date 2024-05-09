@@ -30,8 +30,8 @@ void	Harl::info(void)
 
 void	Harl::warning(void)
 {
-	std::cout << "[ WARNING ]\n" << "I cannot believe adding extra bacon costs more money. You didn’t put"
-				 "enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout << "[ WARNING ]\n" << "I think I deserve to have some extra bacon for free. I’ve been coming for\n"
+					"years whereas you started working here since last month." << std::endl;
 }
 
 void	Harl::error(void)

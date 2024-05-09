@@ -18,7 +18,7 @@ int	main()
 	std::string	input = "";
 
 	phonebook.welcome_msg();
-	std::cout << "> " <<std::flush;
+	std::cout << "> " << std::flush;
 	while (getline(std::cin, input).good())
 	{
 		if (!input.compare("ADD"))

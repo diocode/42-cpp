@@ -10,34 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "BitcoinExchange.hpp"
 
-Cat::Cat() {
-	std::cout << "Cat default constructor called\n";
-	type = "Cat";
-	_brain = new Brain();
+float	strToFloat(std::string str) {
+	std::istringstream	iss(str);
+	float value;
+
+	if (!(iss >> value))
+		return -1;
+	return value;
 }
 
-Cat::Cat(const Cat& value) : AAnimal(value) {
-	std::cout << "Cat copy constructor called\n";
-	*this = value;
-	type = value.type;
-}
+int main(int ac, char **av) {
 
-Cat& Cat::operator=(const Cat& value) {
-	std::cout << "Cat copy assignment operator called\n";
-	if (this == &value)
-		return (*this);
-	this->type = value.type;
-	this->_brain = new Brain(*value._brain);
-	return *this;
-}
+	if (ac != 2)
+		return std::cerr << "Error: could not open file." << std::endl, 1;
 
-Cat::~Cat() {
-	std::cout << "Cat Destructor called\n";
-	delete(_brain);
-}
+	std::ifstream file(av[1]);
+	if (!file.is_open())
+		return std::cerr << "Error: could not open file." << std::endl, 1;
+	file.close();
 
-void	Cat::makeSound() const {
-	std::cout << "Meow Meow\n";
+	BitcoinExchange	btc;
+	btc.exchange(av[1]);
 }

@@ -26,7 +26,10 @@ Cat::Cat(const Cat& value) : Animal(value) {
 
 Cat& Cat::operator=(const Cat& value) {
 	std::cout << "Cat copy assignment operator called\n";
+	if (this == &value)
+		return (*this);
 	this->type = value.type;
+	this->_brain = new Brain(*value._brain);
 	return *this;
 }
 

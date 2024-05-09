@@ -26,7 +26,7 @@ void	Phonebook::welcome_msg(void) const
 	std::cout << std::endl;
 	std::cout << "------------ USAGE ---------------" << std::endl;
 	std::cout << "ADD - to add a contact." << std::endl;
-	std::cout << "SEARCH - to search for a c  ontact." << std::endl;
+	std::cout << "SEARCH - to search for a contact." << std::endl;
 	std::cout << "EXIT - to quite the PhoneBook." << std::endl;
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << std::endl;
@@ -38,7 +38,7 @@ void	Phonebook::add_contact(void)
 
 	this->contacts[i % 8].get_contact();
 	this->contacts[i % 8].set_index(i % 8);
-	if (this->len <= 8)
+	if (this->len < 8)
 		this->len += 1;
 	i++;
 }
