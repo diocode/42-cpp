@@ -15,7 +15,7 @@
 RPN::RPN() {}
 
 RPN::RPN(const RPN &value) {
-	this->stk = value.stk;
+	*this = value;
 }
 
 RPN &RPN::operator=(const RPN &value) {
