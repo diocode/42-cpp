@@ -25,6 +25,14 @@ RPN &RPN::operator=(const RPN &value) {
 
 RPN::~RPN() {}
 
+int strToInt(const std::string& str) {
+	int n;
+	std::stringstream	ss(str);
+
+	ss >> n;
+	return n;
+}
+
 int RPN::calc(const std::string& str) {
 
 	int a, b, res;
@@ -36,7 +44,28 @@ int RPN::calc(const std::string& str) {
 			if (stk.size() < 2)
 				throw std::runtime_error("Error");
 			b = stk.top();
-			stk.pop(); //WIP
+			stk.pop();
+			a = stk.top();
+			stk.pop();
+			switch (curr.at(0))
+			{
+				case '+':
+					res = a + b ; break;
+				case '-':
+					res = a - b ; break;
+				case '*':
+					res = a * b ; break;
+				case '/':
+					if (b != 0)
+						res = a / b;
+					else
+						throw std::runtime_error("Error");
+					break;
+			}
+			stk.push(res);
 		}
+		else
+			stk.push(strToInt(curr));
 	}
+	return stk.top();
 }

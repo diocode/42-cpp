@@ -19,13 +19,16 @@ bool	isValid(const std::string& str) {
 }
 
 int main(int ac, char **av) {
-	if (ac != 2 || !av[1][0] || !isValid(av[1]))
+	if (ac != 2 || !av[1][0] || !isValid(av[1])) {
 		std::cerr << "Error\n";
+		return 1;
+	}
 
 	RPN	calculator;
 
 	try {
 		std::cout << calculator.calc(av[1]) << std::endl;
-	} catch (const std::exception& e)
+	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
+	}
 }
