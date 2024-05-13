@@ -16,13 +16,8 @@
 #include <vector>
 #include <list>
 #include <ctime>
-#include <algorithm> //delete?
 
 class PmergeMe {
-private:
-	void	mergeInVector();
-	void	mergeInList();
-
 public:
 	std::vector<unsigned int> vec;
 	std::list<unsigned int> lst;
