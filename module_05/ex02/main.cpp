@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/01/30 14:56:34 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ int	main() {
 
 	try {
 		Bureaucrat mark("Mark", 2);
+		Bureaucrat joe("Joe", 130);
 		PresidentialPardonForm	form3("targetTest");
 		std::cout << form3 << std::endl;
 
 		mark.signForm(form3);
 		mark.executeForm(form3);
+		joe.executeForm(form3);
 	}
 	catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;

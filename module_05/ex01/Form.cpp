@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/01/27 17:18:17 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : isSigned(false), signGrade(0), execGrade(0) {}
+Form::Form() : isSigned(false), signGrade(150), execGrade(150) {}
 
 Form::Form(std::string name, int signGrade, int execGrade) : name(name), signGrade(signGrade), execGrade(execGrade) {
 	if (signGrade < 1 || execGrade < 1)
@@ -23,7 +23,7 @@ Form::Form(std::string name, int signGrade, int execGrade) : name(name), signGra
 	const_cast<std::string&>(name) = name;
 	isSigned = false;
 	const_cast<int&>(signGrade) = signGrade;
-	const_cast<int&>(execGrade) =execGrade;
+	const_cast<int&>(execGrade) = execGrade;
 }
 
 Form::Form(const Form& value) : name(value.name), isSigned(value.isSigned), signGrade(value.signGrade), execGrade(value.execGrade) {}

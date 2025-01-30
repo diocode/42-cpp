@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/01/30 15:24:13 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int	main() {
 		Bureaucrat joe("Joe", 30);
 
 		Intern someRandomIntern;
-		AForm* rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		AForm* tform = someRandomIntern.makeForm("robotomy request", "Bender");
 
-		joe.signForm(*rrf);
-		joe.executeForm(*rrf);
+		joe.signForm(*tform);
+		joe.executeForm(*tform);
+		delete tform;
 	}
 	catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
@@ -41,6 +42,7 @@ int	main() {
 			joe.signForm(*form);
 			joe.executeForm(*form);
 		}
+		delete form;
 	}
 	catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;

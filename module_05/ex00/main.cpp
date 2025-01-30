@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/01/21 16:28:33 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main() {
 		Bureaucrat mark("Mark", 70);
 		Bureaucrat john("John", 10);
 
-		std::cout << "Bureaucrats:\n" << mark << john;
+		std::cout << "\nBureaucrats:\n" << mark << john;
 	}
 	catch (Bureaucrat::GradeTooLowException & e) {
 		std::cerr << "Error: " << e.what();
@@ -45,12 +45,12 @@ int	main() {
 		Bureaucrat mark("Mark", 5);
 		Bureaucrat john("John", 80);
 
-		std::cout << "Bureaucrats:\n" << jeff << mark << john;
+		std::cout << "\nBureaucrats:\n" << jeff << mark << john;
 
 		mark.decreaseGrade();
 		john.increaseGrade();
 
-		std::cout << "Bureaucrats:\n" << jeff << mark << john;
+		std::cout << "\nBureaucrats:\n" << jeff << mark << john;
 	}
 	catch (Bureaucrat::GradeTooLowException & e) {
 		std::cerr << "Error: " << e.what();
@@ -63,9 +63,9 @@ int	main() {
 	{
 		Bureaucrat mark("Mark", 1);
 		mark.increaseGrade();
-		std::cout << "Bureaucrat:\n" << mark;
+		std::cout << "\nBureaucrat:\n" << mark;
 		mark.increaseGrade();
-		std::cout << "Bureaucrat:\n" << mark;
+		std::cout << "\nBureaucrat:\n" << mark;
 	}
 	catch (Bureaucrat::GradeTooLowException & e) {
 		std::cerr << "Error: " << e.what();

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: digoncal                                   +#+  +:+       +#+         #
-#    <digoncal@student.42porto.com>               +#+#+#+#+#+   +#+            #
-#                                                      #+#    #+#              #
-#                                                     ###   ########.fr        #
+#    By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+         #
+#                        #endif //BUREAUCRAT_HPP                         +#+#+#+#+#+   +#+            #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2025/01/27 17:23:26 by digoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
