@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/05 17:22:30 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,17 @@ static void	print_conversions(int *intNbr, float *floatNbr, double *doubleNbr, b
 }
 
 static void	check_exceptions(std::string literal, float *floatNbr, double *doubleNbr, bool *intFlg) {
-	if (literal == "nan" || literal == "+nan")
+	if (literal == "nan" || literal == "+nan" || literal == "-nan")
 	{
 		*floatNbr = std::numeric_limits<float>::quiet_NaN();
 		*doubleNbr = std::numeric_limits<double>::quiet_NaN();
 		*intFlg = true;
 	}
 	else if (literal == "inf" || literal == "inff" || literal == "+inf" ||
-			 literal == "+inff")
+			 literal == "+inff" || literal == "-inf" || literal == "-inff")
 	{
 		*floatNbr = std::numeric_limits<float>::infinity();
 		*doubleNbr = std::numeric_limits<double>::infinity();
-		*intFlg = true;
-	}
-	else if (literal == "-inf" || literal == "-inff")
-	{
-		*floatNbr = -std::numeric_limits<float>::infinity();
-		*doubleNbr = -std::numeric_limits<double>::infinity();
 		*intFlg = true;
 	}
 }
