@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/18 13:01:20 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	Span::shortestSpan() {
 			res = *(it + 1) - *it;
 		}
 	}
-
 	return res;
 }
 
@@ -67,14 +66,13 @@ int		Span::longestSpan() {
 			res = *(it + 1) - *it;
 		}
 	}
-
 	return res;
 }
 
 const char*	Span::IsFullException::what() const throw() {
-	return "The container is full\n";
+	return "The container is full";
 }
 
 const char*	Span::NotEnoughElementsException::what() const throw() {
-	return "There's not enough elements in the container to execute\n";
+	return "There's not enough elements in the container to execute";
 }

@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   Array.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/12 14:22:34 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <exception>
-#include <cstdlib>
-#include <ctime>
 
 template <typename T>
 class Array {
@@ -30,6 +28,7 @@ public:
 
 	unsigned int	size() const;
 	T& operator[](unsigned int n);
+	const T& operator[](unsigned int n) const;
 
 	class OutOfBoundsException : public std::exception {
 	public:

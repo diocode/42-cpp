@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   Array.tpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/12 14:20:16 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma once
 
 #include "Array.hpp"
 
@@ -54,7 +52,14 @@ unsigned int Array<T>::size() const {
 
 template <typename T>
 T& Array<T>::operator[](unsigned int n) {
-	if (n > size())
+	if (n >= size())
+		throw (Array<T>::OutOfBoundsException());
+	return elements[n];
+}
+
+template <typename T>
+const T& Array<T>::operator[](unsigned int n) const {
+	if (n >= size())
 		throw (Array<T>::OutOfBoundsException());
 	return elements[n];
 }

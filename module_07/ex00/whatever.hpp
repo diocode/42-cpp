@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/10 15:35:55 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 template <typename T>
 void	swap(T& arg1, T& arg2) {

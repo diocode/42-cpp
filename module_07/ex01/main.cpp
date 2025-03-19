@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/10 15:58:30 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 #include <iostream>
 
-static void	addNbr(int& value) {
-	value += 1;
+
+template <typename T>
+void addNbr(T& value) {
+    value += 1;
 }
 
 static void	lessChar(char& value) {
@@ -33,7 +35,7 @@ int	main() {
 	std::cout << "Altered Arr: " << stringArr[0] << stringArr[1] << stringArr[2] << stringArr[3] << stringArr[4] << std::endl;
 
 	std::cout << "\nOriginal Arr: " << intArr[0] << intArr[1] << intArr[2] << std::endl;
-	::iter(intArr, 3, addNbr);
+	::iter(intArr, 3, addNbr<int>);
 	std::cout << "Altered Arr: " << intArr[0] << intArr[1] << intArr[2] << std::endl;
 
 	return 0;

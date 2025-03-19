@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/18 11:59:10 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@ int main()
 	int	arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	std::vector<int>	vector(arr, arr + sizeof(arr) / sizeof(int));
 
-	if (easyfind(vector, 6) >= 0)
-		std::cout << "Found in index: " << easyfind(vector, 6) << std::endl;
-	else
-		std::cout << "Not found.\n";
-
-	if (easyfind(vector, 42) >= 0)
+	try {
+		if (easyfind(vector, 6))
+			std::cout << "Found in index: " << easyfind(vector, 6) << std::endl;	
+		if (easyfind(vector, 42) >= 0)
 		std::cout << "Found in index: " << easyfind(vector, 42) << std::endl;
-	else
-		std::cout << "Not found.\n";
-	return (0);
+	}
+	catch(std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 }

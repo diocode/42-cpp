@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/18 16:26:57 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int main() {
 	MutantStack<int>::iterator ite = mstack.end();
 
 	++it;
+	std::cout << "Iterate(+): " << *it << std::endl;
+	
 	--it;
+	std::cout << "Iterate(-): " << *it << std::endl;
 
 	while (it != ite) {
 		std::cout << "Stack: " << *it << std::endl;
@@ -48,10 +51,11 @@ int main() {
 
 	mlist.push_back(0);
 	mlist.push_back(42);
+	
+	std::cout << "\nHighest value: " << mlist.front() << std::endl;
 
 	mlist.pop_back();
 
-	std::cout << std::endl;
 	std::cout << "Stack size: " << mlist.size() << std::endl;
 
 	mlist.push_back(1);
@@ -62,8 +66,11 @@ int main() {
 	std::list<int>::iterator itList = mlist.begin();
 	std::list<int>::iterator iteList = mlist.end();
 
-	++it;
-	--it;
+	++itList;
+	std::cout << "Iterate(+): " << *itList << std::endl;
+	
+	--itList;
+	std::cout << "Iterate(-): " << *itList << std::endl;
 
 	while (itList != iteList) {
 		std::cout << "List: " << *itList << std::endl;

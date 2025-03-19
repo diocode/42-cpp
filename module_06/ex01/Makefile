@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: digoncal                                   +#+  +:+       +#+         #
-#    <digoncal@student.42porto.com>               +#+#+#+#+#+   +#+            #
-#                                                      #+#    #+#              #
-#                                                     ###   ########.fr        #
+#    By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2025/03/06 15:29:03 by digoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 DEPS =
 
 SRC = main.cpp Serializer.cpp

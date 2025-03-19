@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/18 14:58:46 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main()
 		sp3.addNumber(3);
 		sp3.addNumber(17);
 	} catch (std::exception& e) {
-		std::cout << "Exception: " << e.what();
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 
 	try {
@@ -58,7 +58,7 @@ int main()
 		std::cout << sp4.shortestSpan() << std::endl;
 		std::cout << sp4.longestSpan() << std::endl;
 	} catch (std::exception& e) {
-		std::cout << "Exception: " << e.what();
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 
 	return (0);

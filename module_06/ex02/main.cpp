@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/06 15:37:20 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void identify(Base& p) {
 
 void identify(Base* p) {
 	if (dynamic_cast<A*>(p))
-		std::cout << "A\n";
+		std::cout << "A" << std::endl;
 	else if (dynamic_cast<B*>(p))
-		std::cout << "B\n";
+		std::cout << "B" << std::endl;
 	else if (dynamic_cast<C*>(p))
-		std::cout << "C\n";
+		std::cout << "C" << std::endl;
 }
 
 Base * generate(void) {
