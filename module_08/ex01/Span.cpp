@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/03/18 13:01:20 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:38:05 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,10 @@ int		Span::longestSpan() {
 	if (container.size() < 2)
 		throw NotEnoughElementsException();
 
-	int res = 0;
-	for (std::vector<int>::iterator it = container.begin(); it != container.end(); it++) {
-		if((*(it + 1) - *it ) > res) {
-			res = *(it + 1) - *it;
-		}
-	}
+	std::vector<int> tmp(container);
+	std::sort(tmp.begin(), tmp.end());
+	int res = *(tmp.end() - 1) - *tmp.begin();
+	
 	return res;
 }
 

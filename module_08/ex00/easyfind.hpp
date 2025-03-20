@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/03/18 16:16:40 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:27:37 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 class NotFoundException : public std::exception {
 public:
 	virtual const char *what() const throw() {
-		return "Not found.";
+		return "Not found";
 	};
 };
 
 template <typename T>
 int	easyfind(T container, int n) {
 	typename T::iterator it = std::find(container.begin(), container.end(), n);
-
-	if (it == container.end())
+	if (it == container.end()) {
 		throw (NotFoundException());
+	}
 	return std::distance(container.begin(), it);
 }
