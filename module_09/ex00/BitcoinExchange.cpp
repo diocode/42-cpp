@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/04/08 15:17:38 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &value) {
-	*this = value;
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
+	*this = other;
 }
 
-BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &value) {
-	this->btcPrices = value.btcPrices;
+BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &other) {
+	this->btcPrices = other.btcPrices;
 	return *this;
 }
 
@@ -78,12 +78,13 @@ void	BitcoinExchange::exchange(const std::string &input) {
 	std::getline(file, line);
 	while (std::getline(file, line)) {
 		size_t i = line.find('|');
-		if (i == std::string::npos) {
+		if (i == std::string::npos || line[i + 1] != ' ') {
 			std::cerr << "Error: bad input => " << line.substr(0, i - 1) << std::endl;
 			continue;
 		}
-
+		
 		std::istringstream	iss(line.substr(i + 2));
+		
 		float tmp;
 		if (!(iss >> tmp))
 			std::cerr << "Error: bad input => " << line.substr(i + 2) << std::endl;
