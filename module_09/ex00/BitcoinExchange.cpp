@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/08 15:17:38 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:56:33 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,20 @@ void	BitcoinExchange::exchange(const std::string &input) {
 	std::getline(file, line);
 	while (std::getline(file, line)) {
 		size_t i = line.find('|');
-		if (i == std::string::npos || line[i + 1] != ' ') {
+		struct tm date;
+		if (i == std::string::npos || line[i + 1] != ' ' || strptime(line.substr(0, i - 1).c_str(), "%Y-%m-%d", &date) == NULL) {
 			std::cerr << "Error: bad input => " << line.substr(0, i - 1) << std::endl;
+			continue;
+		}
+
+		struct tm firstDate;
+		strptime("2009-01-02", "%Y-%m-%d", &firstDate);
+
+		time_t inputTime = mktime(&date);
+		time_t firstTime = mktime(&firstDate);
+
+		if (difftime(inputTime, firstTime) < 0) {
+			std::cerr << "Error: date too early => " << line.substr(0, i - 1) << std::endl;
 			continue;
 		}
 		

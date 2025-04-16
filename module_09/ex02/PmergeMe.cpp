@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/04/16 16:38:35 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+//============================ Constructors ==================================
 PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(const PmergeMe &value) {
@@ -26,6 +27,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &value) {
 
 PmergeMe::~PmergeMe() {}
 
+// =========================== Print elements ==================================
 template<typename Container>
 void	printElements(const Container& con, const std::string& str) {
 	std::cout << str << ": ";
@@ -40,43 +42,29 @@ void	printElements(const Container& con, const std::string& str) {
 	std::cout << std::endl;
 }
 
-std::vector<unsigned int>	insertSortVector(std::vector<unsigned int>& left, std::vector<unsigned int>& right) {
-	std::vector<unsigned int> res;
 
-	while (!left.empty() && !right.empty()) {
-		if (left.front() <= right.front()) {
-			res.push_back(left.front());
-			left.erase(left.begin());
-		}
-		else {
-			res.push_back(right.front());
-			right.erase(right.begin());
-		}
-	}
 
-	while (!left.empty()) {
-		res.push_back(left.front());
-		left.erase(left.begin());
-	}
-	while (!right.empty()) {
-		res.push_back(right.front());
-		right.erase(right.begin());
-	}
 
-	return res;
+template <typename Cont, typename PairCont>
+static void	createPairs(const Cont& input, PairCont& output) {
+	
 }
+
 
 std::vector<unsigned int>	mergeInVector(std::vector<unsigned int>& vector) {
 	if (vector.size() < 2)
 		return vector;
-
-	int	split = vector.size() / 2;
-	std::vector<unsigned int> left(vector.begin(), vector.begin() + split);
-	std::vector<unsigned int> right(vector.begin() + split, vector.end());
-
-	left = mergeInVector(left);
-	right = mergeInVector(right);
-	return insertSortVector(left, right);
+	
+	bool	uneven = ((vector.size() % 2) != 0);
+	if (uneven) {
+		unsigned int last = vector.back();
+		vector.pop_back();
+	}
+	
+	std::vector<unsigned int> output;
+	createPairs(vector, output);
+	
+	return PLACEHOLDER;
 }
 
 void	PmergeMe::sortVector(int ac) {
@@ -87,9 +75,27 @@ void	PmergeMe::sortVector(int ac) {
 	double time = static_cast<double>(std::clock() - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
 
 	printElements(sorted, "After");
-	std::cout << "Time to process a range of " << ac - 1 << " elements "
+	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
 		<< "with std::vector<unsigned int> : " << time << " µs" << std::endl;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 std::list<unsigned int>	insertSortList(std::list<unsigned int>& left, std::list<unsigned int>& right) {
@@ -141,6 +147,7 @@ void	PmergeMe::sortList(int ac) {
 	std::clock_t start = std::clock();
 	mergeInList(lst);
 	double time = static_cast<double>(std::clock() - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
-	std::cout << "Time to process a range of " << ac - 1 << " elements "
+	
+	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
 			  << "with std::list<unsigned int> : " << time << " µs" << std::endl;
 }

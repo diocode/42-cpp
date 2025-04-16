@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/08 15:09:05 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:57:18 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include <ctime>
 
 class BitcoinExchange {
 private:

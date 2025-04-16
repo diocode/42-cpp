@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*                                                      :+:      :+:    :+:   */
-/*   By: digoncal                                     +:+ +:+         +:+     */
-/*   <digoncal@student.42porto.com>                 +#+  +:+       +#+        */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Project:                                          #+#    #+#             */
-/*   -> C++ Modules                                   ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/04/15 17:09:43 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ RPN &RPN::operator=(const RPN &value) {
 
 RPN::~RPN() {}
 
-int strToInt(const std::string& str) {
-	int n;
+static int strToLong(const std::string& str) {
+	long n;
 	std::stringstream	ss(str);
 
 	ss >> n;
 	return n;
 }
 
-int RPN::calc(const std::string& str) {
+long RPN::calc(const std::string& str) {
 
-	int a, b, res;
+	long a, b, res;
 	std::stringstream	ss(str);
 	std::string	curr;
 
 	while (ss >> curr) {
-		if (curr == "/" || curr == "*" || curr == "-" || curr == "+") {
+		if (curr == "/" || curr == "*" || curr == "-" || curr == "+") {      //7 7 * 7 -
 			if (stk.size() < 2)
 				throw std::runtime_error("Error");
 			b = stk.top();
@@ -65,7 +65,7 @@ int RPN::calc(const std::string& str) {
 			stk.push(res);
 		}
 		else
-			stk.push(strToInt(curr));
+			stk.push(strToLong(curr));
 	}
 	return stk.top();
 }
