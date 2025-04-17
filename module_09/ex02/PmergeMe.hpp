@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/16 14:21:49 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:48:35 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <list>
 #include <ctime>
 #include <limits>
+#include <algorithm>
 
 class PmergeMe {
 public:
