@@ -1,47 +1,88 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/04/20 19:04:16 by digoncal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PmergeMe.hpp"
-#include <iostream>
-#include <vector>
-#include <list>
-#include <ctime>
-#include <algorithm>
 
 //============================ Constructors ==================================
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe &value) {
-	*this = value;
+PmergeMe::PmergeMe(const PmergeMe &other) {
+	*this = other;
 }
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &value) {
-	this->vec = value.vec;
-	this->lst = value.lst;
+PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
+	this->vec = other.vec;
+	this->lst = other.lst;
 	return *this;
 }
 
 PmergeMe::~PmergeMe() {}
 
-// =========================== Print elements ==================================
+// ================================ Utils ======================================
 template<typename Container>
-void	printElements(const Container& con, const std::string& str) {
+void	printElements(const Container& cont, const std::string& str) {
 	std::cout << str << ": ";
 	typename Container::const_iterator it;
-	for (it = con.begin(); it != con.end(); ++it) {
+	for (it = cont.begin(); it != cont.end(); ++it) {
 		std::cout << *it;
 		typename Container::const_iterator tmp = it;
 		++tmp;
-		if (tmp != con.end())
+		if (tmp != cont.end())
 			std::cout << " ";
 	}
 	std::cout << std::endl;
+}
+
+template <typename Iterator>
+bool isSorted(Iterator begin, Iterator end) {
+    if (begin == end)
+        return true; 
+
+    Iterator next = begin;
+    ++next;
+    while (next != end) {
+        if (*next < *begin) {
+            return false;
+        }
+        ++begin;
+        ++next;
+    }
+    return true;
+}
+
+template <typename PairCont, typename Cont>
+Cont createPendCont(const PairCont& pairs, Cont& cont) {
+	cont.clear();
+	Cont pend;
+
+	typename PairCont::const_iterator it;
+	for (it = pairs.begin(); it != pairs.end(); ++it) {
+		if (it->size() == 2) {
+			cont.push_back(it->back());
+			pend.push_back(it->front());
+		} else {
+			cont.push_back(it->front());
+		}
+	}
+	return pend;
 }
 
 // =============================== Jacobsthal ==================================
 int jacobsthalGenerator(std::size_t nIdx) {
 	static std::vector<int> mem;
 	if (mem.empty()) {
-		mem.push_back(0); // J(0)
-		mem.push_back(1); // J(1)
-		mem.push_back(1); // J(2)
+		mem.push_back(0);
+		mem.push_back(1);
+		mem.push_back(1);
 	}
 
 	while (mem.size() <= nIdx) {
@@ -97,7 +138,7 @@ std::vector<int> computeInsertionOrder(const Cont& pend) {
 	return order;
 }
 
-// ============================== Pair Sorting Helper ==========================
+// ================================== Pairs ====================================
 template <typename T>
 struct CompareByBack {
 	bool operator()(const T& a, const T& b) const {
@@ -105,7 +146,6 @@ struct CompareByBack {
 	}
 };
 
-// ============================== Create Sorted Pairs ==========================
 template <typename Cont, typename PairCont>
 void createSortedPairs(const Cont& input, PairCont& output) {
 	output.clear();
@@ -129,25 +169,6 @@ void createSortedPairs(const Cont& input, PairCont& output) {
 	}
 }
 
-// ========================= Prepare Containers ================================
-template <typename PairCont, typename Cont>
-Cont createPendCont(const PairCont& pairs, Cont& container) {
-	container.clear();
-	Cont pend;
-
-	typename PairCont::const_iterator it;
-	for (it = pairs.begin(); it != pairs.end(); ++it) {
-		if (it->size() == 2) {
-			container.push_back(it->back());
-			pend.push_back(it->front());
-		} else {
-			container.push_back(it->front());
-		}
-	}
-	return pend;
-}
-
-// ============================== Merge Insert =================================
 template <typename Cont>
 void mergeInsertPairs(Cont& cont, const Cont& pend) {
 	std::vector<int> order = computeInsertionOrder(pend);
@@ -177,11 +198,11 @@ std::vector<unsigned int> mergeInVector(std::vector<unsigned int>& vector) {
 
 	std::sort(pairs.begin(), pairs.end(), CompareByBack<std::vector<unsigned int> >());
 
-	std::vector<unsigned int> mainChain;
-	std::vector<unsigned int> pend = createPendCont(pairs, mainChain);
+	std::vector<unsigned int> sorted;
+	std::vector<unsigned int> pend = createPendCont(pairs, sorted);
 
-	mergeInsertPairs(mainChain, pend);
-	return mainChain;
+	mergeInsertPairs(sorted, pend);
+	return sorted;
 }
 
 void PmergeMe::sortVector(int ac) {
@@ -192,12 +213,11 @@ void PmergeMe::sortVector(int ac) {
 	double time = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 100000;
 
 	printElements(sorted, "After");
-    // Check if the vector is sorted
-    for (std::size_t i = 1; i < sorted.size(); ++i) {
-        if (sorted[i - 1] > sorted[i])
-            std::cout << "\033[31mError: Vector is not sorted.\033[0m" << std::endl;
+
+    if (!isSorted(sorted.begin(), sorted.end())) {
+    std::cout << "Error: Not sorted." << std::endl;
     }
-    // Delete later
+
 	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
 	          << "with std::vector<unsigned int> : " << time << " µs" << std::endl;
 }
@@ -211,17 +231,21 @@ std::list<unsigned int> mergeInList(std::list<unsigned int>& list) {
 
 	pairs.sort(CompareByBack<std::list<unsigned int> >());
 
-	std::list<unsigned int> mainChain;
-	std::list<unsigned int> pend = createPendCont(pairs, mainChain);
+	std::list<unsigned int> sorted;
+	std::list<unsigned int> pend = createPendCont(pairs, sorted);
 
-	mergeInsertPairs(mainChain, pend);
-	return mainChain;
+	mergeInsertPairs(sorted, pend);
+	return sorted;
 }
 
 void PmergeMe::sortList(int ac) {
 	std::clock_t start = std::clock();
-	mergeInList(lst);
+	std::list<unsigned int> sorted = mergeInList(lst);
 	double time = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 100000;
+
+    if (!isSorted(sorted.begin(), sorted.end())) {
+        std::cout << "Error: Not sorted." << std::endl;
+    }
 
 	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
 	          << "with std::list<unsigned int> : " << time << " µs" << std::endl;
