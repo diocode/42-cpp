@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/20 19:04:16 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:24:09 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,26 @@ struct CompareByBack {
 	}
 };
 
+template <typename Cont>
+void mergeInsertPairs(Cont& cont, const Cont& pend) {
+	std::vector<int> order = computeInsertionOrder(pend);
+
+	for (std::size_t i = 0; i < order.size(); ++i) {
+		int idx = order[i];
+		if (idx < 0 || static_cast<std::size_t>(idx) >= pend.size())
+			continue;
+
+		typename Cont::const_iterator it = pend.begin();
+		std::advance(it, idx);
+
+		typename Cont::iterator pos = cont.begin();
+		while (pos != cont.end() && *pos <= *it)
+			++pos;
+
+		cont.insert(pos, *it);
+	}
+}
+
 template <typename Cont, typename PairCont>
 void createSortedPairs(const Cont& input, PairCont& output) {
 	output.clear();
@@ -166,26 +186,6 @@ void createSortedPairs(const Cont& input, PairCont& output) {
 			pair.push_back(first);
 			output.push_back(pair);
 		}
-	}
-}
-
-template <typename Cont>
-void mergeInsertPairs(Cont& cont, const Cont& pend) {
-	std::vector<int> order = computeInsertionOrder(pend);
-
-	for (std::size_t i = 0; i < order.size(); ++i) {
-		int idx = order[i];
-		if (idx < 0 || static_cast<std::size_t>(idx) >= pend.size())
-			continue;
-
-		typename Cont::const_iterator it = pend.begin();
-		std::advance(it, idx);
-
-		typename Cont::iterator pos = cont.begin();
-		while (pos != cont.end() && *pos <= *it)
-			++pos;
-
-		cont.insert(pos, *it);
 	}
 }
 
@@ -215,7 +215,8 @@ void PmergeMe::sortVector(int ac) {
 	printElements(sorted, "After");
 
     if (!isSorted(sorted.begin(), sorted.end())) {
-    std::cout << "Error: Not sorted." << std::endl;
+    	std::cout << "Error: Not sorted." << std::endl;
+		return;
     }
 
 	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
@@ -245,6 +246,7 @@ void PmergeMe::sortList(int ac) {
 
     if (!isSorted(sorted.begin(), sorted.end())) {
         std::cout << "Error: Not sorted." << std::endl;
+		return;
     }
 
 	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
