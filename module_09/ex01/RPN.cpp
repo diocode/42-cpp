@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/15 17:09:43 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:04:33 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ long RPN::calc(const std::string& str) {
 	std::string	curr;
 
 	while (ss >> curr) {
-		if (curr == "/" || curr == "*" || curr == "-" || curr == "+") {      //7 7 * 7 -
+		if (curr == "/" || curr == "*" || curr == "-" || curr == "+") {
 			if (stk.size() < 2)
 				throw std::runtime_error("Error");
 			b = stk.top();

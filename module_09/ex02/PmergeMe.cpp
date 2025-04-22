@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/21 14:24:09 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:47:53 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 PmergeMe::~PmergeMe() {}
 
 // ================================ Utils ======================================
+
 template<typename Container>
 void	printElements(const Container& cont, const std::string& str) {
 	std::cout << str << ": ";
@@ -40,23 +41,6 @@ void	printElements(const Container& cont, const std::string& str) {
 			std::cout << " ";
 	}
 	std::cout << std::endl;
-}
-
-template <typename Iterator>
-bool isSorted(Iterator begin, Iterator end) {
-    if (begin == end)
-        return true; 
-
-    Iterator next = begin;
-    ++next;
-    while (next != end) {
-        if (*next < *begin) {
-            return false;
-        }
-        ++begin;
-        ++next;
-    }
-    return true;
 }
 
 template <typename PairCont, typename Cont>
@@ -130,11 +114,13 @@ std::vector<int> computeInsertionOrder(const Cont& pend) {
 			}
 			prev = curr;
 		}
+
 		for (int i = prev + 1; i < size; ++i) {
 			if (std::find(order.begin(), order.end(), i) == order.end())
 				order.push_back(i);
 		}
 	}
+	
 	return order;
 }
 
@@ -214,11 +200,6 @@ void PmergeMe::sortVector(int ac) {
 
 	printElements(sorted, "After");
 
-    if (!isSorted(sorted.begin(), sorted.end())) {
-    	std::cout << "Error: Not sorted." << std::endl;
-		return;
-    }
-
 	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
 	          << "with std::vector<unsigned int> : " << time << " µs" << std::endl;
 }
@@ -243,11 +224,6 @@ void PmergeMe::sortList(int ac) {
 	std::clock_t start = std::clock();
 	std::list<unsigned int> sorted = mergeInList(lst);
 	double time = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 100000;
-
-    if (!isSorted(sorted.begin(), sorted.end())) {
-        std::cout << "Error: Not sorted." << std::endl;
-		return;
-    }
 
 	std::cout << "Time to process a range of [" << ac - 1 << "] elements "
 	          << "with std::list<unsigned int> : " << time << " µs" << std::endl;
