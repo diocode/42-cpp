@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/22 13:04:33 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:28:08 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ long RPN::calc(const std::string& str) {
 		else
 			stk.push(strToLong(curr));
 	}
+	if (stk.size() != 1)
+		throw std::runtime_error("Error");
 	return stk.top();
 }

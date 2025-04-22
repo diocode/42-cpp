@@ -6,7 +6,7 @@
 /*   By: digoncal <digoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/22 13:03:02 by digoncal         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:17:32 by digoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ bool	isValid(const std::string& str) {
 	return false;
 }
 
-bool	whiteSpaces(const std::string& str) {
-	for (size_t i = 0; i < str.length(); i++) {
-		if (str[i] != ' ' || str[i] != '\t' || str[i] != '\n')
-			return false;
-	}
-	return true;
+bool	onlyWhiteSpaces(const std::string& str) {
+	size_t i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		i++;
+	if (str[i] == '\0')
+		return true;
+	return false;
 }
 
 int main(int ac, char **av) {
-	if (ac != 2 || !av[1][0] || !isValid(av[1]) || !whiteSpaces(av[1])) {
+	if (ac != 2 || !av[1][0] || !isValid(av[1]) || onlyWhiteSpaces(av[1])) {
 		std::cerr << "Error\n";
 		return 1;
 	}
